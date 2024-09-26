@@ -1,0 +1,26 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#matrix-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
