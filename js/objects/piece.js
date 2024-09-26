@@ -197,7 +197,7 @@ class Pieza{
     }
 
 
-    irudia(){
+    getIrudia(){
         return this.list[this.rotazioa];
     }
 
