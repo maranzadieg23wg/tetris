@@ -151,7 +151,7 @@ shape: [
 ]
 
 
-class pieza{
+class Pieza{
     constructor(mota){
         this.mota = mota;
         this.rotazioa= 0;
