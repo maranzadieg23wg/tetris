@@ -1,4 +1,4 @@
-shape: [
+const shape= [
     // I piece
     [
       [
