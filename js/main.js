@@ -23,7 +23,7 @@ let pie = new Pieza("I");
 impMatriz();
 
 
-
+setInterval(impMatriz, 1000); //Deitzeko funtzio bateri nahi den bakoitzean
 
 document.addEventListener('keydown', (event) => {
     keyName = event.key;
