@@ -208,4 +208,4 @@ class Pieza{
 
 
 
-export default pieza;
+export default Pieza;
