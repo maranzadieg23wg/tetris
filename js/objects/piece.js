@@ -156,13 +156,13 @@ class Pieza{
         this.mota = mota;
         this.rotazioa= 0;
 
-        this.list = this.lortuFOrma(tipo);
+        this.list = this.lortuFOrma(mota);
         
     }
 
 
-    lortuFOrma(tipo) {
-        switch (tipo) {
+    lortuFOrma(mota) {
+        switch (mota) {
             case "I":
                 return shape[0];
             case "H":
@@ -184,7 +184,7 @@ class Pieza{
 
     rotatu90(){
         this.rotazioa++;
-        if(this.rotazioa >4){
+        if(this.rotazioa >3){
             this.rotazioa = 0;
         }
     }
