@@ -17,6 +17,19 @@ console.log(kuadro);
 let pie = new Pieza("I"); 
 
 
+function gehituPieza(pie){
+    let mat = pie.getIrudia();
+
+    for(let i=0;i<mat.length;i++){
+        for(let e =0;e<mat[i].length;e++){
+            if(mat[i][e] ==1){
+                if(kuadro[0][5]==0){
+                    
+                }
+            }
+        }
+    }
+}
 
 
 
