@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mover número con flechas</title>
+    <style>
+        .matriz {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            grid-template-rows: repeat(5, 50px);
+            gap: 5px;
+        }
+        .celda {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #000;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+   
+
+    <!-- Contenedor donde se mostrará la matriz -->
+    <div id="matriz" class="matriz"></div>
+
+    <script>
+        // Crear una matriz 5x5 inicializada con ceros
+        const filas = 5;
+        const columnas = 5;
+        let matriz = Array(filas).fill().map(() => Array(columnas).fill(0));
+
+        // Variables para la posición actual del número
+        let posX = 0;
+        let posY = 0;
+
+        
+        // Función para renderizar la matriz en el HTML
+        function renderizarMatriz() {
+            const contenedorMatriz = document.getElementById('matriz');
+            contenedorMatriz.innerHTML = ''; // Limpiar el contenido previo
+
+            for (let i = 0; i < filas; i++) {
+                for (let j = 0; j < columnas; j++) {
+                    const celda = document.createElement('div');
+                    celda.className = 'celda';
+                    celda.textContent = matriz[i][j]; // Mostrar el valor de la matriz
+                    contenedorMatriz.appendChild(celda);
+                }
+            }
+        }
+
+       
+        function generar1(){
+            let gelditu=true;
+            let kokapena;
+            while(gelditu){
+                kokapena=randomPosizioa(5);
+                if(matriz[0][kokapena]!=1){
+                    matriz[0][kokapena]=1;
+                    gelditu=false;
+                }
+                
+            }
+            return kokapena;
+        }
+        function bete(){
+            let count=0;
+        
+            const interbaloa= setInterval(() => {
+                let kokapena=generar1()
+                    
+                
+                
+                    for(let i=0; i<filas-1; i++){
+                        if(matriz[i+1][kokapena]==0){
+                            const interbaloa1= setInterval(() => {
+                                if(i<filas-1){
+                                    matriz[i][kokapena]=0;
+                           
+                                }
+                        
+                                matriz[i+1][kokapena]=1;
+                                console.log( matriz[i+1][kokapena]);
+                            }, 5000);
+                        }
+                    }
+                
+
+                count=0;
+                for(let a=0; a<columnas-1; a++){
+                    if(matriz[a][0]==1){
+                        count++;
+                    } 
+                }
+                
+                if(count==5){
+                    clearInterval(interbaloa);
+                 
+                }
+            }, 2000);
+        }
+
+        function randomPosizioa(max){
+            return Math.floor(Math.random()*max);
+        }
+       bete();
+
+        // Escuchar los eventos de teclado
+        document.addEventListener('keydown', function(event) {
+            moverNumero(event.key); // Llamar a la función moverNumero con la tecla presionada
+        });
+
+        // Renderizar la matriz inicial
+        renderizarMatriz();
+    </script>
+</body>
+</html>
