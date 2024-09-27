@@ -12,7 +12,7 @@ let kuadro = [];
 for (let i = 0; i < y; i++) {
     kuadro[i] = new Array(x).fill(0);
 }
-console.log(kuadro);
+//console.log(kuadro);
 
 let pie = new Pieza("H"); 
 
@@ -32,40 +32,45 @@ function gehituPieza(pie){
 
 
 function behera(){
-    console.log(111)
+    console.log(111);
     if(libre("s")){
-        for(let i=kuadro.length;i>0;i--){
-            for(let e=0;e<kuadro[i].length;e++){
-                if(kuadro[i][e]==2){
-                    kuadro[i+1][e]=1;
-                    kuadro[i][e]=0;
+        for(let i = kuadro.length - 1; i >= 0; i--){
+            for(let e = 0; e < kuadro[i].length; e++){
+                if(kuadro[i][e] == 2){
+                    kuadro[i+1][e] = 2;
+                    kuadro[i][e] = 0;
+                }
+            }
+        }
+    } else {
+        gelditu();
+    }
+}
+
+
+
+function libre(nora){
+    for(let i = 0; i < kuadro.length; i++){
+        for(let e = 0; e < kuadro[i].length; e++){
+            if(kuadro[i][e] == 2){
+                if (i == kuadro.length - 1 || kuadro[i+1][e] == 1){
+                    return false;
+                }
+
+                if(nora == "A" && (e == 0 || kuadro[i][e-1] == 1)){
+                    return false;
+                }
+
+                if(nora == "D" && (e == x - 1 || kuadro[i][e+1] == 1)){
+                    return false;
                 }
             }
         }
     }
+    return true;
 }
 
 
-function libre(nora){
-    for(let i=0;i<kuadro.length;i++){
-        for(let e=0;e<kuadro[i].length;e++){
-            if(i== kuadro.length||(kuadro[i][e]==2 && kuadro[i+1][e])){
-                gelditu;
-                return false;
-            }
-
-            if(nora =="A" && (e ==0 || kuadro[i][e-1])){
-                return false;
-            }
-
-            if(nora =="D" && (e ==X || kuadro[i][e+1])){
-                return false;
-            }
-
-            return true;
-        }
-    }
-}
 
 
 function gelditu(){
