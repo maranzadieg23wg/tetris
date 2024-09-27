@@ -89,7 +89,11 @@ function gelditu(){
 impMatriz();
 
 
-setInterval(behera, 100); //Deitzeko funtzio bateri nahi den bakoitzean
+setInterval(() => {
+    behera();
+    impMatriz();
+}, 1000);
+ //Deitzeko funtzio bateri nahi den bakoitzean
 
 document.addEventListener('keydown', (event) => {
     keyName = event.key;
