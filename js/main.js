@@ -2,7 +2,7 @@ import Pieza from './objects/piece.js';
 
 
 const x = 10;
-const y = 20;
+const y = 21;
 
 
 let keyName;
@@ -14,23 +14,26 @@ for (let i = 0; i < y; i++) {
 }
 console.log(kuadro);
 
-let pie = new Pieza("I"); 
+let pie = new Pieza("H"); 
 
+gehituPieza(pie);
 
 function gehituPieza(pie){
     let mat = pie.getIrudia();
-
     for(let i=0;i<mat.length;i++){
-        for(let e =0;e<mat[i].length;e++){
+        for(let e=0;e<mat[i].length;e++){
             if(mat[i][e] ==1){
-                if(kuadro[0][5]==0){
-                    
-                }
+                kuadro[i][e+4]=2;
             }
         }
     }
+    
 }
 
+
+function libre(nora){
+    
+}
 
 
 impMatriz();
@@ -60,7 +63,7 @@ function impMatriz() {
     const container = document.getElementById("proba");
     container.innerHTML = "";
 
-    for (let i = 0; i < kuadro.length; i++) {
+    for (let i = 1; i < kuadro.length; i++) {
         const row = document.createElement("div");
         row.classList.add("row"); 
 
