@@ -31,15 +31,60 @@ function gehituPieza(pie){
 }
 
 
-function libre(nora){
-    
+function behera(){
+    console.log(111)
+    if(libre("s")){
+        for(let i=kuadro.length;i>0;i--){
+            for(let e=0;e<kuadro[i].length;e++){
+                if(kuadro[i][e]==2){
+                    kuadro[i+1][e]=1;
+                    kuadro[i][e]=0;
+                }
+            }
+        }
+    }
 }
 
+
+function libre(nora){
+    for(let i=0;i<kuadro.length;i++){
+        for(let e=0;e<kuadro[i].length;e++){
+            if(i== kuadro.length||(kuadro[i][e]==2 && kuadro[i+1][e])){
+                gelditu;
+                return false;
+            }
+
+            if(nora =="A" && (e ==0 || kuadro[i][e-1])){
+                return false;
+            }
+
+            if(nora =="D" && (e ==X || kuadro[i][e+1])){
+                return false;
+            }
+
+            return true;
+        }
+    }
+}
+
+
+function gelditu(){
+    for(let i=0;i<kuadro.length;i++){
+        for(let e=0;e<kuadro[i].length;e++){
+            if(kuadro[i][e]==2){
+
+                kuadro[i][e]=1;
+                let pie = new Pieza("H"); 
+                gehituPieza(pie);
+            }
+        }
+    }
+}
 
 impMatriz();
 
 
-setInterval(impMatriz, 1000); //Deitzeko funtzio bateri nahi den bakoitzean
+setInterval(behera, 100); //Deitzeko funtzio bateri nahi den bakoitzean
 
 document.addEventListener('keydown', (event) => {
     keyName = event.key;
