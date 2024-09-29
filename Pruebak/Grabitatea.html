@@ -56,67 +56,67 @@
 
        
         function generar1(){
-            let gelditu=true;
+            let gelditu=false;
             let kokapena;
-            while(gelditu){
+            while(!gelditu){
                 kokapena=randomPosizioa(5);
                 if(matriz[0][kokapena]!=1){
                     matriz[0][kokapena]=1;
-                    gelditu=false;
+                    gelditu=true;
                 }
                 
             }
             return kokapena;
         }
-        function bete(){
-            let count=0;
-        
-            const interbaloa= setInterval(() => {
-                let kokapena=generar1()
-                    
-                
-                
-                    for(let i=0; i<filas-1; i++){
-                        if(matriz[i+1][kokapena]==0){
-                            const interbaloa1= setInterval(() => {
-                                if(i<filas-1){
-                                    matriz[i][kokapena]=0;
-                           
-                                }
-                        
-                                matriz[i+1][kokapena]=1;
-                                console.log( matriz[i+1][kokapena]);
-                            }, 5000);
-                        }
-                    }
-                
+        function zenbakiaJetxi(kokapena){
+            let fila1= 0;
 
-                count=0;
-                for(let a=0; a<columnas-1; a++){
-                    if(matriz[a][0]==1){
-                        count++;
-                    } 
-                }
-                
-                if(count==5){
+            const interbaloa= setInterval(() => {
+     
+                    
+                if(matriz[fila1+1][kokapena]==0 && fila1<filas-1){
+                    
+                    matriz[fila1][kokapena]=0;
+                    matriz[fila1+1][kokapena]=1;   
+                    fila1++;
+                    renderizarMatriz();       
+                } else {
                     clearInterval(interbaloa);
-                 
                 }
+
+            }, 500);
+        }
+
+        function bete(){
+            const interbaloa= setInterval(() => {
+                if(bukatu()){
+                    clearInterval(interbaloa);
+                    return;
+                }
+                let kokapena= generar1();
+                zenbakiaJetxi(kokapena);
             }, 2000);
         }
 
         function randomPosizioa(max){
             return Math.floor(Math.random()*max);
         }
-       bete();
 
-        // Escuchar los eventos de teclado
-        document.addEventListener('keydown', function(event) {
-            moverNumero(event.key); // Llamar a la función moverNumero con la tecla presionada
-        });
+        function bukatu(){
+            /*for(let i=0; i<filas; i++){
+                if(matriz[0][i]==1){
+                    return true;
+                }
+            }  
+
+            return false;*/
+            return matriz[0].every(celda => celda === 1);
+        }
+
 
         // Renderizar la matriz inicial
         renderizarMatriz();
+        bete();
     </script>
 </body>
 </html>

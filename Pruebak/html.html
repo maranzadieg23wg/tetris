@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mover número automáticamente</title>
+    <style>
+        .matriz {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            grid-template-rows: repeat(5, 50px);
+            gap: 5px;
+        }
+        .celda {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #000;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor donde se mostrará la matriz -->
+    <div id="matriz" class="matriz"></div>
+
+    <script>
+        // Crear una matriz 5x5 inicializada con ceros
+        const filas = 5;
+        const columnas = 5;
+        let matriz = Array(filas).fill().map(() => Array(columnas).fill(0));
+
+        // Función para renderizar la matriz en el HTML
+        function renderizarMatriz() {
+            const contenedorMatriz = document.getElementById('matriz');
+            contenedorMatriz.innerHTML = ''; // Limpiar el contenido previo
+
+            for (let i = 0; i < filas; i++) {
+                for (let j = 0; j < columnas; j++) {
+                    const celda = document.createElement('div');
+                    celda.className = 'celda';
+                    celda.textContent = matriz[i][j]; // Mostrar el valor de la matriz
+                    contenedorMatriz.appendChild(celda);
+                }
+            }
+        }
+
+        // Generar un número aleatorio en la primera fila (si está libre)
+        function generar1() {
+            let generado = false;
+            let kokapena;
+
+            // Encontrar una posición libre en la primera fila
+            while (!generado) {
+                kokapena = randomPosizioa(5);
+                if (matriz[0][kokapena] != 1) {
+                    matriz[0][kokapena] = 1;
+                    generado = true;
+                }
+            }
+            return kokapena;
+        }
+
+        // Hacer que el número caiga desde la posición [0][kokapena]
+        function bajarNumero(kokapena) {
+            let filaActual = 0; // Empieza desde la fila superior
+
+            const interbaloa1 = setInterval(() => {
+                if (filaActual < filas - 1 && matriz[filaActual + 1][kokapena] == 0) {
+                    matriz[filaActual][kokapena] = 0; // Borrar la posición actual
+                    matriz[filaActual + 1][kokapena] = 1; // Mover a la siguiente posición
+                    filaActual++;
+                    renderizarMatriz(); // Actualizar la visualización
+                } else {
+                    clearInterval(interbaloa1); // Detener cuando llegue al fondo
+                }
+            }, 500);
+        }
+
+        // Función principal para generar números periódicamente y hacerlos bajar
+        function bete() {
+            const interbaloa = setInterval(() => {
+                // Revisar si la primera fila está llena
+                if (primeraFilaLlena()) {
+                    clearInterval(interbaloa); // Detener el proceso si la fila está llena
+                    return;
+                }
+
+                let kokapena = generar1(); // Generar un número en la primera fila
+                bajarNumero(kokapena); // Hacer que baje
+            }, 2000); // Cada 2 segundos generar un número nuevo
+        }
+
+        // Verificar si la primera fila está llena
+        function primeraFilaLlena() {
+            return matriz[0].every(celda => celda === 1);
+        }
+
+        // Generar una posición aleatoria
+        function randomPosizioa(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        // Renderizar la matriz inicial
+        renderizarMatriz();
+        // Iniciar la función de caída
+        bete();
+    </script>
+</body>
+</html>
