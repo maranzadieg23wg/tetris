@@ -32,7 +32,7 @@ function gehituPieza(pie){
 
 
 function behera(){
-    console.log(111);
+    //console.log(111);
     if(libre("s")){
         for(let i = kuadro.length - 1; i >= 0; i--){
             for(let e = 0; e < kuadro[i].length; e++){
@@ -51,9 +51,11 @@ function eskubi(){
     console.log(libre("d"));
     
     if(libre("d")){
-        for(let i = 0;i<kuadro.length;i++){
-            for(let e = kuadro[i].length;e<0;e--){
-                console.log("proba")
+        
+        for(let i = 0; i < kuadro.length; i++){
+            for(let e = kuadro[i].length;e>0;e--){
+                kuadro[i][e+1] = 2;
+                kuadro[i][e] = 0;
             }
         }
     }
