@@ -1,5 +1,8 @@
 import Pieza from './objects/piece.js';
 
+/* Audio */
+var audio = new Audio('../soundtrack/tetris.mp3');
+audio.play();
 
 const x = 10;
 const y = 21;
@@ -161,6 +164,9 @@ setInterval(() => {
  //Deitzeko funtzio bateri nahi den bakoitzean
 
 document.addEventListener('keydown', (event) => {
+
+    audio.play();
+    audio.loop = true;
     keyName = event.key;
     console.log(`Sakatutako tekla: ${keyName}`);
 
