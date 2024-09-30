@@ -116,13 +116,37 @@ function libre(nora){
 
 function gelditu(){
     for(let i=0;i<kuadro.length;i++){
+        let total=0;
         for(let e=0;e<kuadro[i].length;e++){
             if(kuadro[i][e]==2){
 
                 kuadro[i][e]=1;
-                let pie = new Pieza("H"); 
-                gehituPieza(pie);
+                
             }
+
+            total+=kuadro[i][e];
+        }
+        if(total>=x){
+            garbitu(i);
+        }
+    }
+    let pie = new Pieza("H"); 
+    gehituPieza(pie);
+}
+
+function garbitu(lin){
+    for(let e=0;e<kuadro[lin].length;e++){
+        kuadro[lin][e]=0;
+    }
+
+    garbiBehera(lin);
+}
+
+function garbiBehera(lin){
+    for(let i = lin; i > 0; i--){
+        for(let e = 0; e < kuadro[i].length; e++){
+            kuadro[i][e] = kuadro[i-1][e];
+            //kuadro[i-1][e] = kuadro[i-2][e];
         }
     }
 }
