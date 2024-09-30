@@ -53,7 +53,7 @@ function eskubi(){
     if(libre("d")){
         for(let i = 0;i<kuadro.length;i++){
             for(let e = kuadro[i].length;e<0;e--){
-
+                console.log("proba")
             }
         }
     }
