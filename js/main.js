@@ -47,6 +47,18 @@ function behera(){
     }
 }
 
+function eskubi(){
+    console.log(libre("d"));
+    
+    if(libre("d")){
+        for(let i = 0;i<kuadro.length;i++){
+            for(let e = kuadro[i].length;e<0;e--){
+
+            }
+        }
+    }
+}
+
 
 
 function libre(nora){
@@ -103,14 +115,17 @@ document.addEventListener('keydown', (event) => {
 
 
     if(keyName == "a"){
-        pie.rotatu_90();
+        eskubi();
     }
     if(keyName == "d"){
-        pie.rotatu90();
+        //pie.rotatu90();
+
+        console.log("eskubira mugitu")
+        eskubi();
     }
 
     
-});
+}); 
 
 
 function impMatriz() {
