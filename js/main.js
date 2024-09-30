@@ -54,10 +54,15 @@ function eskubi(){
         
         for(let i = 0; i < kuadro.length; i++){
             for(let e = kuadro[i].length-1;e>0;e--){
-                kuadro[i][e] = kuadro[i][e - 1];
-                impMatriz()
+
+                if (kuadro[i][e] == 2) {
+                    kuadro[i][e+1] = 2;
+                    kuadro[i][e - 1] = 0;
+                }
+                impMatriz(); 
             }
-            kuadro[i][0] = 0;
+            
+           
         }
     }
 }
@@ -65,16 +70,24 @@ function eskubi(){
 function ezker(){
     console.log(libre("a"));
     
-    if(libre("a")){
-        
-        for(let i = 0; i < kuadro.length; i++){
-            for(let e = kuadro[i].length-1;e>0;e--){
-                kuadro[i][e] = kuadro[i][e - 1];
-                impMatriz()
+    if (libre("a")) {
+        for (let i = 0; i < kuadro.length; i++) {
+            for (let e = 0; e < kuadro[i].length - 1; e++) {
+
+                if (kuadro[i][e] == 2) {
+                    kuadro[i][e-1] = 2;
+                    kuadro[i][e + 1] = 0;  
+                }
+                impMatriz();  
             }
-            kuadro[i][0] = 0;
         }
     }
+}
+
+
+function azkar(){
+    behera();
+    impMatriz();
 }
 
 
@@ -140,6 +153,9 @@ document.addEventListener('keydown', (event) => {
 
         console.log("eskubira mugitu")
         eskubi();
+    }
+    if(keyName == "s"){
+        azkar();
     }
 
     
