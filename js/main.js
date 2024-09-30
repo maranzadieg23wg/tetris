@@ -62,6 +62,21 @@ function eskubi(){
     }
 }
 
+function ezker(){
+    console.log(libre("a"));
+    
+    if(libre("a")){
+        
+        for(let i = 0; i < kuadro.length; i++){
+            for(let e = kuadro[i].length-1;e>0;e--){
+                kuadro[i][e] = kuadro[i][e - 1];
+                impMatriz()
+            }
+            kuadro[i][0] = 0;
+        }
+    }
+}
+
 
 
 function libre(nora){
@@ -118,7 +133,7 @@ document.addEventListener('keydown', (event) => {
 
 
     if(keyName == "a"){
-        eskubi();
+        ezker();
     }
     if(keyName == "d"){
         //pie.rotatu90();
