@@ -57,11 +57,11 @@ function libre(nora){
                     return false;
                 }
 
-                if(nora == "A" && (e == 0 || kuadro[i][e-1] == 1)){
+                if(nora == "a" && (e == 0 || kuadro[i][e-1] == 1)){
                     return false;
                 }
 
-                if(nora == "D" && (e == x - 1 || kuadro[i][e+1] == 1)){
+                if(nora == "d" && (e == x - 1 || kuadro[i][e+1] == 1)){
                     return false;
                 }
             }
