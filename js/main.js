@@ -59,7 +59,7 @@ function eskubi(){
                     kuadro[i][e+1] = 2;
                     kuadro[i][e - 1] = 0;
                 }
-                impMatriz(); 
+                
             }
             
            
@@ -78,7 +78,6 @@ function ezker(){
                     kuadro[i][e-1] = 2;
                     kuadro[i][e + 1] = 0;  
                 }
-                impMatriz();  
             }
         }
     }
@@ -87,7 +86,6 @@ function ezker(){
 
 function azkar(){
     behera();
-    impMatriz();
 }
 
 
@@ -145,17 +143,18 @@ document.addEventListener('keydown', (event) => {
 
 
 
-    if(keyName == "a"){
+    if(keyName == "a" || keyName == "ArrowLeft"){
         ezker();
+        impMatriz(); 
     }
-    if(keyName == "d"){
+    if(keyName == "d" || keyName == "ArrowRight"){
         //pie.rotatu90();
-
-        console.log("eskubira mugitu")
         eskubi();
+        impMatriz(); 
     }
-    if(keyName == "s"){
+    if(keyName == "s" || keyName == "ArrowDown"){
         azkar();
+        impMatriz(); 
     }
 
     
