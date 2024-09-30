@@ -53,10 +53,11 @@ function eskubi(){
     if(libre("d")){
         
         for(let i = 0; i < kuadro.length; i++){
-            for(let e = kuadro[i].length;e>0;e--){
-                kuadro[i][e+1] = 2;
-                kuadro[i][e] = 0;
+            for(let e = kuadro[i].length-1;e>0;e--){
+                kuadro[i][e] = kuadro[i][e - 1];
+                impMatriz()
             }
+            kuadro[i][0] = 0;
         }
     }
 }
