@@ -10,10 +10,12 @@ const y = 21;
 
 let keyName;
  
+let bete = "";
 
 let kuadro = [];
 for (let i = 0; i < y; i++) {
     kuadro[i] = new Array(x).fill(0);
+    //kuadro[i] = new Array(x);
 }
 //console.log(kuadro);
 
@@ -133,7 +135,7 @@ function gelditu(){
             garbitu(i);
         }
     }
-    let pie = new Pieza("H"); 
+    let pie = new Pieza("T"); 
     gehituPieza(pie);
 }
 
@@ -203,7 +205,11 @@ function impMatriz() {
         for (let j = 0; j < kuadro[i].length; j++) {
             const cell = document.createElement("span");
             cell.classList.add("cell");
-            cell.textContent = kuadro[i][j]; 
+            if(kuadro[i][j] !=0){
+                cell.textContent = kuadro[i][j]; 
+            }else{
+                cell.textContent = ""; 
+            }
             row.appendChild(cell);
         }
         container.appendChild(row);
