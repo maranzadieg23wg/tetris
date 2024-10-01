@@ -42,7 +42,7 @@ class Puntuak{
     }
 
     maxScoreIdatzi(){
-        const container = document.getElementById("maxScore");
+        const container = document.getElementById("puntuak_max");
         container.innerHTML = "Max Score: "+this.maxScore;
     }
 
