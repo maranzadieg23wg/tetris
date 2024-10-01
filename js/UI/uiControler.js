@@ -48,8 +48,9 @@ class Puntuak{
 
 
     hilda(){
+        //console.log(this.maxScore);
         if(this.maxScore< this.score){
-            maxScore = this.score;
+            this.maxScore = this.score;
             this.setCookie();
         }
     }
@@ -60,7 +61,7 @@ class Puntuak{
     setCookie() {
         let name = "puntuak";
         let days = 9999;
-        let value = maxScore
+        let value = this.maxScore
         let expires = "";
         if (days) {
             const date = new Date();
