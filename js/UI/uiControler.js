@@ -6,7 +6,7 @@ class Puntuak{
         this.lerro=0;
         this.maxScore = this.getCookie();
 
-        if(this.maxScore !=null){
+        if(this.maxScore ==null){
             this.maxScore =0;
         }
     }
