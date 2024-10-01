@@ -5,6 +5,10 @@ class Puntuak{
         this.score =0;
         this.lerro=0;
         this.maxScore = this.getCookie();
+
+        if(this.maxScore !=null){
+            this.maxScore =0;
+        }
     }
 
 
