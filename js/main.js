@@ -1,5 +1,7 @@
 import Pieza from './objects/piece.js';
 
+import Puntuak from './UI/uiControler.js';
+
 /* Audio */
 var audio = new Audio('../soundtrack/tetris.mp3');
 audio.play();
@@ -13,6 +15,11 @@ let keyName;
 const lista =["H", "I", "S", "Z", "L", "J", "T"];
 let horaingoa =[];
 
+
+
+
+/* PUNTUAK */
+let puntuak = new Puntuak();
 
 let kuadro = [];
 for (let i = 0; i < y; i++) {
@@ -53,6 +60,8 @@ function piezaBerria(){
     let izena = horaingoa[pos];
 
     horaingoa.splice(pos,1);
+
+    puntuak.probabilitateak(horaingoa);
 
     return izena;
 }
@@ -112,6 +121,7 @@ function ezker(){
 
 
 function azkar(){
+    puntuak.lerroGehitiz();
     behera();
 }
 
@@ -154,6 +164,7 @@ function gelditu(){
             total+=kuadro[i][e];
         }
         if(total>=x){
+            puntuak.lerroKenduta(total/10);
             garbitu(i);
         }
     }
@@ -218,6 +229,8 @@ document.addEventListener('keydown', (event) => {
 function impMatriz() {
     const container = document.getElementById("proba");
     container.innerHTML = "";
+    puntuak.puntuakIdatzi();
+    puntuak.maxScoreIdatzi();
 
     for (let i = 1; i < kuadro.length; i++) {
         const row = document.createElement("div");
