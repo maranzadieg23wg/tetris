@@ -10,7 +10,9 @@ const y = 21;
 
 let keyName;
  
-let bete = "";
+const lista =["H", "I", "S", "Z", "L", "J", "T"];
+let horaingoa =[];
+
 
 let kuadro = [];
 for (let i = 0; i < y; i++) {
