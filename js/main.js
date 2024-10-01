@@ -53,7 +53,7 @@ function behera(){
 }
 
 function eskubi(){
-    console.log(libre("d"));
+    //console.log(libre("d"));
     
     if(libre("d")){
         
@@ -62,7 +62,7 @@ function eskubi(){
 
                 if (kuadro[i][e] == 2) {
                     kuadro[i][e+1] = 2;
-                    kuadro[i][e - 1] = 0;
+                    kuadro[i][e] = 0;
                 }
                 
             }
@@ -73,7 +73,7 @@ function eskubi(){
 }
 
 function ezker(){
-    console.log(libre("a"));
+    //console.log(libre("a"));
     
     if (libre("a")) {
         for (let i = 0; i < kuadro.length; i++) {
@@ -81,7 +81,7 @@ function ezker(){
 
                 if (kuadro[i][e] == 2) {
                     kuadro[i][e-1] = 2;
-                    kuadro[i][e + 1] = 0;  
+                    kuadro[i][e] = 0;  
                 }
             }
         }
@@ -135,7 +135,7 @@ function gelditu(){
             garbitu(i);
         }
     }
-    let pie = new Pieza("T"); 
+    let pie = new Pieza("L"); 
     gehituPieza(pie);
 }
 
