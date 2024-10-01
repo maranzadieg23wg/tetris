@@ -4,6 +4,8 @@ body {
     display: flex;
     text-align: center;
     justify-content: center;
+    background: rgb(113,113,113);
+    background: linear-gradient(180deg, rgba(113,113,113,1) 55%, rgba(0,0,0,1) 100%);
 }
 
 #matrix-container {
@@ -23,4 +25,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#osoa{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  
+}
+#proba_kaxa{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
