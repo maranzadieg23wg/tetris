@@ -6,7 +6,7 @@ import Puntuak from './UI/uiControler.js';
 var audio = new Audio('../soundtrack/tetris.mp3');
 audio.play();
 
-const x = 10;
+let x = 10;
 const y = 21;
 
 
