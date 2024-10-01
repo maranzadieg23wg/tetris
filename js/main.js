@@ -250,3 +250,11 @@ function impMatriz() {
         container.appendChild(row);
     }
 }
+
+let a= document.getElementById("tamaina_handitu");
+a.addEventListener("click", handitu_matrizea());
+
+function handitu_matrizea(){
+    x+=2;
+    impMatriz();
+}
