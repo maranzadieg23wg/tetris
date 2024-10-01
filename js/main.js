@@ -251,10 +251,13 @@ function impMatriz() {
     }
 }
 
-let a= document.getElementById("tamaina_handitu");
-a.addEventListener("click", handitu_matrizea());
+
+document.getElementById("tamaina_handitu").addEventListener("click", handitu_matrizea);
 
 function handitu_matrizea(){
-    x+=2;
+    x+=1;
+    for (let i = 0; i < kuadro.length; i++) {
+        kuadro[i].push(0); 
+    }
     impMatriz();
 }
