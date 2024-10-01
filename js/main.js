@@ -1,5 +1,8 @@
 import Pieza from './objects/piece.js';
 
+/* Audio */
+var audio = new Audio('../soundtrack/tetris.mp3');
+audio.play();
 
 const x = 10;
 const y = 21;
@@ -7,14 +10,18 @@ const y = 21;
 
 let keyName;
  
+const lista =["H", "I", "S", "Z", "L", "J", "T"];
+let horaingoa =[];
+
 
 let kuadro = [];
 for (let i = 0; i < y; i++) {
     kuadro[i] = new Array(x).fill(0);
+    //kuadro[i] = new Array(x);
 }
 //console.log(kuadro);
 
-let pie = new Pieza("H"); 
+let pie = new Pieza(piezaBerria()); 
 
 gehituPieza(pie);
 
@@ -30,9 +37,29 @@ function gehituPieza(pie){
     
 }
 
+function piezaBerria(){
+    
+    if(horaingoa.length <=0){
+        horaingoa = lista.slice();
+    }
+
+    //console.log(horaingoa);
+    let z = horaingoa.length;
+    //console.log("Luzeera: "+z);
+
+    let pos = Math.floor(Math.random() * z);
+    //console.log("pos: "+pos);
+
+    let izena = horaingoa[pos];
+
+    horaingoa.splice(pos,1);
+
+    return izena;
+}
+
 
 function behera(){
-    console.log(111);
+    //console.log(111);
     if(libre("s")){
         for(let i = kuadro.length - 1; i >= 0; i--){
             for(let e = 0; e < kuadro[i].length; e++){
@@ -51,12 +78,41 @@ function eskubi(){
     console.log(libre("d"));
     
     if(libre("d")){
-        for(let i = 0;i<kuadro.length;i++){
-            for(let e = kuadro[i].length;e<0;e--){
+        
+        for(let i = 0; i < kuadro.length; i++){
+            for(let e = kuadro[i].length;e>=0;e--){
 
+                if (kuadro[i][e] == 2) {
+                    kuadro[i][e+1] = 2;
+                    kuadro[i][e] = 0;
+                }
+                
+            }
+            
+           
+        }
+    }
+}
+
+function ezker(){
+    console.log(libre("a"));
+    
+    if (libre("a")) {
+        for (let i = 0; i < kuadro.length; i++) {
+            for (let e = 0; e < kuadro[i].length; e++) {
+
+                if (kuadro[i][e] == 2) {
+                    kuadro[i][e-1] = 2;
+                    kuadro[i][e] = 0;  
+                }
             }
         }
     }
+}
+
+
+function azkar(){
+    behera();
 }
 
 
@@ -87,13 +143,37 @@ function libre(nora){
 
 function gelditu(){
     for(let i=0;i<kuadro.length;i++){
+        let total=0;
         for(let e=0;e<kuadro[i].length;e++){
             if(kuadro[i][e]==2){
 
                 kuadro[i][e]=1;
-                let pie = new Pieza("H"); 
-                gehituPieza(pie);
+                
             }
+
+            total+=kuadro[i][e];
+        }
+        if(total>=x){
+            garbitu(i);
+        }
+    }
+    let pie = new Pieza(piezaBerria()); 
+    gehituPieza(pie);
+}
+
+function garbitu(lin){
+    for(let e=0;e<kuadro[lin].length;e++){
+        kuadro[lin][e]=0;
+    }
+
+    garbiBehera(lin);
+}
+
+function garbiBehera(lin){
+    for(let i = lin; i > 0; i--){
+        for(let e = 0; e < kuadro[i].length; e++){
+            kuadro[i][e] = kuadro[i-1][e];
+            //kuadro[i-1][e] = kuadro[i-2][e];
         }
     }
 }
@@ -108,20 +188,27 @@ setInterval(() => {
  //Deitzeko funtzio bateri nahi den bakoitzean
 
 document.addEventListener('keydown', (event) => {
+
+    audio.play();
+    audio.loop = true;
     keyName = event.key;
     console.log(`Sakatutako tekla: ${keyName}`);
 
 
 
 
-    if(keyName == "a"){
-        eskubi();
+    if(keyName == "a" || keyName == "ArrowLeft"){
+        ezker();
+        impMatriz(); 
     }
-    if(keyName == "d"){
+    if(keyName == "d" || keyName == "ArrowRight"){
         //pie.rotatu90();
-
-        console.log("eskubira mugitu")
         eskubi();
+        impMatriz(); 
+    }
+    if(keyName == "s" || keyName == "ArrowDown"){
+        azkar();
+        impMatriz(); 
     }
 
     
@@ -140,7 +227,11 @@ function impMatriz() {
         for (let j = 0; j < kuadro[i].length; j++) {
             const cell = document.createElement("span");
             cell.classList.add("cell");
-            cell.textContent = kuadro[i][j]; 
+            if(kuadro[i][j] !=0){
+                cell.textContent = kuadro[i][j]; 
+            }else{
+                cell.textContent = ""; 
+            }
             row.appendChild(cell);
         }
         container.appendChild(row);
