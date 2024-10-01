@@ -1,4 +1,8 @@
-/* style.css */
+
+html, body {
+    overflow: hidden; 
+}
+
 body {
     font-family: Arial, sans-serif;
    
@@ -52,7 +56,9 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    
+    position: fixed;
+    bottom: 0;
+    left: 0;
     background-color: #000000;
     width: 100%;
     color: white;
