@@ -61,6 +61,10 @@ function piezaBerria(){
 
     horaingoa.splice(pos,1);
 
+    if(horaingoa.length <=0){
+        horaingoa = lista.slice();
+    }
+
     puntuak.probabilitateak(horaingoa);
 
     return izena;
@@ -252,9 +256,25 @@ function impMatriz() {
 }
 
 let a= document.getElementById("tamaina_handitu");
-a.addEventListener("click", handitu_matrizea());
+a.addEventListener("click", handitu_matrizea);
 
 function handitu_matrizea(){
-    x+=2;
+    x+=1;
     impMatriz();
+}
+
+
+
+
+
+
+
+
+
+
+
+let probabilitateBotoia = document.getElementById("portzentaila");
+probabilitateBotoia.addEventListener("click", erakutsiHurrengoa);
+function erakutsiHurrengoa(){
+    puntuak.erakutsiGehiago();
 }

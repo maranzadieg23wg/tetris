@@ -5,6 +5,7 @@ class Puntuak{
         this.score =0;
         this.lerro=0;
         this.maxScore = this.getCookie();
+        this.erakutsi=0;
 
         if(this.maxScore ==null){
             this.maxScore =0;
@@ -86,12 +87,57 @@ class Puntuak{
 
 
 
+    erakutsiGehiago(){
+        this.erakutsi++;
+    }
+
 
 
     probabilitateak(lista){
+
+        console.log(lista);
+        if (this.erakutsi>=1){
+            const container = document.getElementById("H");
+            container.innerHTML = this.probalitate(lista, "H")*100+"%";
+        }
+        if (this.erakutsi>=2){
+            const container = document.getElementById("J");
+            container.innerHTML = this.probalitate(lista, "J")*100+"%";
+        }
+        if (this.erakutsi>=3){
+            const container = document.getElementById("S");
+            container.innerHTML = this.probalitate(lista, "S")*100+"%";
+        }
+        if (this.erakutsi>=4){
+            const container = document.getElementById("L");
+            container.innerHTML = this.probalitate(lista, "L")*100+"%";
+        }
+        if (this.erakutsi>=5){
+            const container = document.getElementById("Z");
+            container.innerHTML = this.probalitate(lista, "Z")*100+"%";
+        }
+        if (this.erakutsi>=5){
+            const container = document.getElementById("I");
+            container.innerHTML = this.probalitate(lista, "I")*100+"%";
+        }
+        if (this.erakutsi>=5){
+            const container = document.getElementById("T");
+            container.innerHTML = this.probalitate(lista, "T")*100+"%";
+        }
+
+
         
     }
 
+    probalitate(lista, pieza){
+        if(lista.includes(pieza)){
+            let z = 1/lista.length;
+            
+            return Math.round(z * 100) / 100;
+        }else{
+            return 0;
+        }
+    }
 
 
 }
