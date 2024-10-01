@@ -21,7 +21,7 @@ for (let i = 0; i < y; i++) {
 }
 //console.log(kuadro);
 
-let pie = new Pieza("H"); 
+let pie = new Pieza(piezaBerria()); 
 
 gehituPieza(pie);
 
@@ -35,6 +35,26 @@ function gehituPieza(pie){
         }
     }
     
+}
+
+function piezaBerria(){
+    
+    if(horaingoa.length <=0){
+        horaingoa = lista.slice();
+    }
+
+    //console.log(horaingoa);
+    let z = horaingoa.length;
+    //console.log("Luzeera: "+z);
+
+    let pos = Math.floor(Math.random() * z);
+    //console.log("pos: "+pos);
+
+    let izena = horaingoa[pos];
+
+    horaingoa.splice(pos,1);
+
+    return izena;
 }
 
 
@@ -55,12 +75,12 @@ function behera(){
 }
 
 function eskubi(){
-    //console.log(libre("d"));
+    console.log(libre("d"));
     
     if(libre("d")){
         
         for(let i = 0; i < kuadro.length; i++){
-            for(let e = kuadro[i].length-1;e>0;e--){
+            for(let e = kuadro[i].length;e>=0;e--){
 
                 if (kuadro[i][e] == 2) {
                     kuadro[i][e+1] = 2;
@@ -75,11 +95,11 @@ function eskubi(){
 }
 
 function ezker(){
-    //console.log(libre("a"));
+    console.log(libre("a"));
     
     if (libre("a")) {
         for (let i = 0; i < kuadro.length; i++) {
-            for (let e = 0; e < kuadro[i].length - 1; e++) {
+            for (let e = 0; e < kuadro[i].length; e++) {
 
                 if (kuadro[i][e] == 2) {
                     kuadro[i][e-1] = 2;
@@ -137,7 +157,7 @@ function gelditu(){
             garbitu(i);
         }
     }
-    let pie = new Pieza("L"); 
+    let pie = new Pieza(piezaBerria()); 
     gehituPieza(pie);
 }
 
