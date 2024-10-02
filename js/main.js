@@ -189,12 +189,12 @@ function rotatu90(){
     if(libreRot(newPos)){
         for(let i =0;i<pos.length;i++){
             let temp = pos[i];
-            kuadro[temp[1]][temp[2]]=0;
+            kuadro[temp[0]][temp[1]]=0;
         }
 
         for(let i =0;i<newPos.length;i++){
             let temp = newPos[i];
-            kuadro[temp[1]][temp[2]]=2;
+            kuadro[temp[0]][temp[1]]=2;
         }
     }
 
