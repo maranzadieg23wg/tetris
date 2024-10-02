@@ -266,7 +266,7 @@ a.addEventListener("click", handitu_matrizea());
 document.getElementById("tamaina_handitu").addEventListener("click", handitu_matrizea);
 
 function handitu_matrizea(){
-    if(puntuak.puntuak_heman()>=100){
+    if(puntuak.getScore()>=100){
         puntuak.kenduPuntuak(100);
         x+=1;
         for (let i = 0; i < kuadro.length; i++) {
