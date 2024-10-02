@@ -13,11 +13,12 @@ class Puntuak{
     }
 
     getScore(){
-        return this.score;
+        return Math.round(this.score);
     }
 
     gehituPuntuak(zenbat) {
         this.score+=zenbat;
+        
         this.hilda();
     }
 
@@ -42,7 +43,7 @@ class Puntuak{
 
     puntuakIdatzi(){
         const container = document.getElementById("puntuak");
-        container.innerHTML = "Score: "+this.score;
+        container.innerHTML = "Score: "+Math.round(this.score);
     }
 
     maxScoreIdatzi(){
@@ -55,6 +56,7 @@ class Puntuak{
         //console.log(this.maxScore);
         if(this.maxScore< this.score){
             this.maxScore = this.score;
+            this.maxScore = Math.round(this.maxScore);
             this.setCookie();
         }
     }
