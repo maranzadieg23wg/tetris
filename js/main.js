@@ -134,83 +134,71 @@ function azkar(){
 }
 
 
-function rotatu90(){
-    let pos =[]
+function rotatu90() {
+    let pos = [];
+    let pivot = null;
+
+    // Encontrar las posiciones de la pieza (celdas con valor 2) y definir un pivote (por ejemplo, la primera celda)
     for (let i = 0; i < kuadro.length; i++) {
         for (let e = 0; e < kuadro[i].length; e++) {
-
             if (kuadro[i][e] == 2) {
-                let temp = [i, e]
+                let temp = [i, e];
                 pos.push(temp);
+                if (pivot === null) {
+                    pivot = [i, e]; // Tomamos la primera celda encontrada como pivote
+                }
             }
         }
     }
-    let newPos=[];
-    for(let i=0;i<pos.length;i++){
-        let temp = pos[i];
-        let te =[];
-        let a = temp[0];
-        let b = temp[1];
 
-        if(i ==1){
-            
-            a++;
-            b++;
+    let newPos = [];
+    let px = pivot[0];
+    let py = pivot[1];
 
-            te = [a, b];
-            newPos.push(te);
-        }
-        if(i ==2){
-            
-            a++;
-            b--;
+    for (let i = 0; i < pos.length; i++) {
+        let a = pos[i][0]; // Coordenada x
+        let b = pos[i][1]; // Coordenada y
 
-            te = [a, b];
-            newPos.push(te);
-        }
-        if(i ==3){
-            
-            
-            te = [a, b];
-            newPos.push(te);
-        }
-        if(i ==4){
-            a--;
-            b++;
-            
-            te = [a, b];
-            newPos.push(te);
-        }
+        // Fórmula para rotación alrededor del pivote (90 grados)
+        let newA = px + (b - py);
+        let newB = py - (a - px);
+
+        let te = [newA, newB];
+        newPos.push(te);
     }
 
-    console.log(pos);
-    console.log(newPos);
+    console.log("Posiciones originales:", pos);
+    console.log("Posiciones después de rotar:", newPos);
 
-    if(libreRot(newPos)){
-        for(let i =0;i<pos.length;i++){
+    // Verificar si la rotación es válida (espacios libres)
+    if (libreRot(newPos)) {
+        // Limpiar las posiciones antiguas
+        for (let i = 0; i < pos.length; i++) {
             let temp = pos[i];
-            kuadro[temp[0]][temp[1]]=0;
+            kuadro[temp[0]][temp[1]] = 0;
         }
 
-        for(let i =0;i<newPos.length;i++){
+        // Colocar las nuevas posiciones en la matriz
+        for (let i = 0; i < newPos.length; i++) {
             let temp = newPos[i];
-            kuadro[temp[0]][temp[1]]=2;
+            kuadro[temp[0]][temp[1]] = 2;
         }
     }
 
     impMatriz();
-
 }
 
-function libreRot(lista){
-    for(let i =0;i<lista.length;i++){
+function libreRot(lista) {
+    // Verificar si las nuevas posiciones están dentro de la matriz y libres
+    for (let i = 0; i < lista.length; i++) {
         let temp = lista[i];
-        if(1 == kuadro[temp[1]] || 1 == kuadro[temp[2]]){
+        if (temp[0] < 0 || temp[0] >= kuadro.length || temp[1] < 0 || temp[1] >= kuadro[0].length || kuadro[temp[0]][temp[1]] == 1) {
             return false;
         }
     }
     return true;
 }
+
 
 function libre(nora){
     for(let i = 0; i < kuadro.length; i++){
