@@ -2,6 +2,8 @@ import Pieza from './objects/piece.js';
 
 import Puntuak from './UI/uiControler.js';
 
+import Probabilitateak from './obekuntzak/probabilitate.js';
+
 /* Audio */
 var audio = new Audio('../soundtrack/tetris.mp3');
 audio.play();
@@ -20,6 +22,9 @@ let horaingoa =[];
 
 /* PUNTUAK */
 let puntuak = new Puntuak();
+
+/* OBEKUNTZAK */
+let probabili = new Probabilitateak();
 
 let kuadro = [];
 for (let i = 0; i < y; i++) {
@@ -65,7 +70,7 @@ function piezaBerria(){
         horaingoa = lista.slice();
     }
 
-    puntuak.probabilitateak(horaingoa);
+    probabili.probabilitatea(horaingoa);
 
     return izena;
 }
@@ -276,5 +281,10 @@ function handitu_matrizea(){
 let probabilitateBotoia = document.getElementById("portzentaila");
 probabilitateBotoia.addEventListener("click", erakutsiHurrengoa);
 function erakutsiHurrengoa(){
-    puntuak.erakutsiGehiago();
+    if(puntuak.getScore()>= probabili.getPrezioa()){
+        console.log("Erosita");
+        puntuak.kenduPuntuak(probabili.getPrezioa());
+        probabili.erakutsiGehiago();
+    }
+    
 }
