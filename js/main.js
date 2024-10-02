@@ -46,7 +46,6 @@ function gehituPieza(pie){
             }
         }
     }
-    
 }
 
 function piezaBerria(){
@@ -135,6 +134,83 @@ function azkar(){
 }
 
 
+function rotatu90(){
+    let pos =[]
+    for (let i = 0; i < kuadro.length; i++) {
+        for (let e = 0; e < kuadro[i].length; e++) {
+
+            if (kuadro[i][e] == 2) {
+                let temp = [i, e]
+                pos.push(temp);
+            }
+        }
+    }
+    let newPos=[];
+    for(let i=0;i<pos.length;i++){
+        let temp = pos[i];
+        let te =[];
+        let a = temp[0];
+        let b = temp[1];
+
+        if(i ==1){
+            
+            a++;
+            b++;
+
+            te = [a, b];
+            newPos.push(te);
+        }
+        if(i ==2){
+            
+            a++;
+            b--;
+
+            te = [a, b];
+            newPos.push(te);
+        }
+        if(i ==3){
+            
+            
+            te = [a, b];
+            newPos.push(te);
+        }
+        if(i ==4){
+            a--;
+            b++;
+            
+            te = [a, b];
+            newPos.push(te);
+        }
+    }
+
+    console.log(pos);
+    console.log(newPos);
+
+    if(libreRot(newPos)){
+        for(let i =0;i<pos.length;i++){
+            let temp = pos[i];
+            kuadro[temp[1]][temp[2]]=0;
+        }
+
+        for(let i =0;i<newPos.length;i++){
+            let temp = newPos[i];
+            kuadro[temp[1]][temp[2]]=2;
+        }
+    }
+
+    impMatriz();
+
+}
+
+function libreRot(lista){
+    for(let i =0;i<lista.length;i++){
+        let temp = lista[i];
+        if(1 == kuadro[temp[1]] || 1 == kuadro[temp[2]]){
+            return false;
+        }
+    }
+    return true;
+}
 
 function libre(nora){
     for(let i = 0; i < kuadro.length; i++){
@@ -219,7 +295,7 @@ document.addEventListener('keydown', (event) => {
 
     if(keyName == "a" || keyName == "ArrowLeft"){
         ezker();
-        pie.rotatu90;
+        //pie.rotatu90;
         impMatriz(); 
     }
     if(keyName == "d" || keyName == "ArrowRight"){
@@ -231,6 +307,12 @@ document.addEventListener('keydown', (event) => {
         azkar();
         impMatriz(); 
     }
+    if(keyName == "z"){
+        rotatu90();
+        impMatriz(); 
+    }
+
+
 
     
 }); 
