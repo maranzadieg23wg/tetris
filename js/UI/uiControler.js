@@ -116,11 +116,11 @@ class Puntuak{
             const container = document.getElementById("Z");
             container.innerHTML = this.probalitate(lista, "Z")*100+"%";
         }
-        if (this.erakutsi>=5){
+        if (this.erakutsi>=6){
             const container = document.getElementById("I");
             container.innerHTML = this.probalitate(lista, "I")*100+"%";
         }
-        if (this.erakutsi>=5){
+        if (this.erakutsi>=7){
             const container = document.getElementById("T");
             container.innerHTML = this.probalitate(lista, "T")*100+"%";
         }
