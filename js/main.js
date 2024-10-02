@@ -157,7 +157,9 @@ function libre(nora){
     return true;
 }
 
-
+function gameOver(){
+    
+}
 
 
 function gelditu(){
