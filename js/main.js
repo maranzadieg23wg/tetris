@@ -251,10 +251,37 @@ function impMatriz() {
     }
 }
 
-let a= document.getElementById("tamaina_handitu");
-a.addEventListener("click", handitu_matrizea());
+
+document.getElementById("tamaina_handitu").addEventListener("click", handitu_matrizea);
 
 function handitu_matrizea(){
-    x+=2;
-    impMatriz();
+    if(puntuak.puntuak_heman()>=100){
+        puntuak.kenduPuntuak(100);
+        x+=1;
+        for (let i = 0; i < kuadro.length; i++) {
+            kuadro[i].push(0); 
+        }
+        impMatriz();
+    }
+}
+
+
+document.getElementById("fondo-G").addEventListener("click", fondo_G);
+document.getElementById("fondo-B").addEventListener("click", fondo_B);
+document.getElementById("fondo-Normal").addEventListener("click", fondo_Normal);
+
+function fondo_G(){
+    document.body.style.backgroundImage = "url('../img/giga-chad.png')";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+}
+function fondo_B(){
+    document.body.style.backgroundImage = "url('../img/berserk.png')";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+}
+function fondo_Normal(){
+    document.body.style.background = "linear-gradient(180deg, rgba(113,113,113,1) 30%, rgba(0,0,0,1) 100%)";
 }
