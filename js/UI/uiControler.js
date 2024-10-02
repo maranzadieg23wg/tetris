@@ -11,6 +11,9 @@ class Puntuak{
         }
     }
 
+    puntuak_heman(){
+        return this.score;
+    }
 
     gehituPuntuak(zenbat) {
         this.score+=zenbat;
