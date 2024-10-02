@@ -2,6 +2,8 @@ import Pieza from './objects/piece.js';
 
 import Puntuak from './UI/uiControler.js';
 
+import Probabilitateak from './obekuntzak/probabilitate.js';
+
 /* Audio */
 var audio = new Audio('../soundtrack/tetris.mp3');
 audio.play();
@@ -20,6 +22,9 @@ let horaingoa =[];
 
 /* PUNTUAK */
 let puntuak = new Puntuak();
+
+/* OBEKUNTZAK */
+let probabili = new Probabilitateak();
 
 let kuadro = [];
 for (let i = 0; i < y; i++) {
@@ -61,7 +66,11 @@ function piezaBerria(){
 
     horaingoa.splice(pos,1);
 
-    puntuak.probabilitateak(horaingoa);
+    if(horaingoa.length <=0){
+        horaingoa = lista.slice();
+    }
+
+    probabili.probabilitatea(horaingoa);
 
     return izena;
 }
@@ -251,6 +260,8 @@ function impMatriz() {
     }
 }
 
+let a= document.getElementById("tamaina_handitu");
+a.addEventListener("click", handitu_matrizea());
 
 document.getElementById("tamaina_handitu").addEventListener("click", handitu_matrizea);
 
@@ -263,6 +274,27 @@ function handitu_matrizea(){
         }
         impMatriz();
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+let probabilitateBotoia = document.getElementById("portzentaila");
+probabilitateBotoia.addEventListener("click", erakutsiHurrengoa);
+function erakutsiHurrengoa(){
+    if(puntuak.getScore()>= probabili.getPrezioa()){
+        console.log("Erosita");
+        puntuak.kenduPuntuak(probabili.getPrezioa());
+        probabili.erakutsiGehiago();
+    }
+    
 }
 
 

@@ -5,13 +5,14 @@ class Puntuak{
         this.score =0;
         this.lerro=0;
         this.maxScore = this.getCookie();
+       
 
         if(this.maxScore ==null){
             this.maxScore =0;
         }
     }
 
-    puntuak_heman(){
+    getScore(){
         return this.score;
     }
 
@@ -89,12 +90,7 @@ class Puntuak{
 
 
 
-
-
-    probabilitateak(lista){
-        
-    }
-
+    
 
 
 }
