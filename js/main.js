@@ -219,6 +219,7 @@ document.addEventListener('keydown', (event) => {
 
     if(keyName == "a" || keyName == "ArrowLeft"){
         ezker();
+        pie.rotatu90;
         impMatriz(); 
     }
     if(keyName == "d" || keyName == "ArrowRight"){
