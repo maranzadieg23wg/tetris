@@ -1,3 +1,13 @@
+@font-face {
+    font-family: darkSouls;
+    src: url(../fonts/OptimusPrinceps.ttf);
+}
+
+@font-face {
+    font-family: darkSoulsBold;
+    src: url(../fonts/OptimusPrincepsSemiBold.ttf);
+}
+
 
 html, body {
     overflow: hidden; 
@@ -155,3 +165,50 @@ body {
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 button:hover{background-color: #3e8e41;}
+
+
+
+
+
+
+.hidden {
+    display: none;
+}
+
+#death-screen {
+    margin: 0;
+    background: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    opacity: 1;
+    padding-top: 1px;
+}
+
+
+.death-background * {
+    /*padding-top: 100%;*/
+    color: #ff0000;
+    font-family: darkSouls, sans-serif;
+    letter-spacing: 5px;
+    font-size: 8em;
+    font-weight: 400;
+    animation: fade-in 5s linear, text-zoom 3s linear;
+}
+
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@keyframes text-zoom {
+    0% { font-size: 5em; }
+    25% { font-size: 6em; }
+    50% { font-size: 7em; }
+    75% { font-size: 8em; }
+    100% { font-size: 8em; }
+}
