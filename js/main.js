@@ -397,6 +397,7 @@ function jokua_gelditu(){
 /*******************Reset botoila*******************/
 document.getElementById("reset_botoila").addEventListener("click", jokua_reset);
 function jokua_reset(){
+    deathKendu();
     pausa=false;
     probabili.erakutsiReset();
     puntuak.kenduPuntuak(puntuak.getScore());
@@ -438,10 +439,28 @@ function bukatuta(){
             if(kuadro[i][e]!==0){
                 
                 //jokua_reset();
+                deathErakutsi();
                 pausa=true;
             }
         }
     }
+}
+
+function deathErakutsi() {
+    //console.log(111111111111111);
+    var audio = new Audio('../soundtrack/Dark_Souls_3_YOU_DIED.mp3');
+    audio.play();
+    let deathScreen = document.getElementById("death-screen");
+    deathScreen.classList.remove("hidden");
+    deathScreen.classList.add("death-background");
+    deathScreen.innerHTML = "<p>YOU DIED</p>";
+}
+
+function deathKendu(){
+    let deathScreen = document.getElementById("death-screen");
+    deathScreen.classList.add("hidden");
+    deathScreen.classList.remove("death-background");
+    deathScreen.innerHTML = "<p>YOU DIED</p>";
 }
 
 
