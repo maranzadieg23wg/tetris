@@ -352,7 +352,7 @@ function impMatriz() {
 
 document.getElementById("tamaina_handitu").addEventListener("click", handitu_matrizea);
 
-let prezioa=1500; // <-----------------------PREZIOA--------------------------------------
+let prezioa=100; // <-----------------------PREZIOA--------------------------------------
 let zenbat_aldiz=0;
 function handitu_matrizea(){
     if(puntuak.getScore()>=prezioa){
@@ -399,7 +399,7 @@ document.getElementById("reset_botoila").addEventListener("click", jokua_reset);
 function jokua_reset(){
     probabili.erakutsiReset();
     puntuak.kenduPuntuak(puntuak.getScore());
-    prezioa=1500; // <-----------------------PREZIOA--------------------------------------
+    prezioa=100; // <-----------------------PREZIOA--------------------------------------
     probabili.zenbatBalio();
     x=10;
     for (let i = 0; i < 10; i++) {
@@ -412,6 +412,7 @@ function jokua_reset(){
     hustu();
     impMatriz();
     gehituPieza(pie);
+    behera();
     document.getElementById("puntu_T").innerHTML="Handitu: "+prezioa+"P";
 }
 
