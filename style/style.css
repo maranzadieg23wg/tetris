@@ -212,3 +212,26 @@ button:hover{background-color: #3e8e41;}
     75% { font-size: 8em; }
     100% { font-size: 8em; }
 }
+
+
+
+
+.flying-gif {
+    position: fixed;
+    left: -200px;
+    z-index: -1;
+    width: 100px;
+    transform: translateY(-50%);
+    animation-name: fly-across;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fly-across {
+    0% {
+        left: -200px;
+    }
+    100% {
+        left: 110vw;
+    }
+}

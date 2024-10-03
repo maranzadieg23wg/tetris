@@ -5,6 +5,8 @@ class Puntuak{
         this.score =0;
         this.lerro=0;
         this.maxScore = this.getCookie();
+
+        this.tetris =5;
        
 
         if(this.maxScore ==null){
@@ -27,12 +29,43 @@ class Puntuak{
     }
 
     lerroKenduta(zenbat){
+        console.log("zenbat"+zenbat);
         this.lerro+=zenbat;
         if(zenbat ==1){
             this.gehituPuntuak(100);
         }else{
             this.gehituPuntuak(300*zenbat);
         }
+
+        if(zenbat ==4){
+            this.tetris++;
+            this.tetrisEginda();
+        }
+    }
+
+    tetrisEginda(){
+        for(let i=0;i<=this.tetris;i++){
+            this.createFlyingGif();
+        }
+    }
+
+
+    createFlyingGif() {
+        const gif = document.createElement('img');
+        gif.src = './img/nyan-cat-poptart-cat.gif'; 
+        gif.classList.add('flying-gif');
+    
+        document.body.appendChild(gif);
+    
+        const randomHeight = Math.random() * 70;
+        gif.style.top = randomHeight + 'vh';
+    
+        const randomSpeed = Math.random() * 5 + 5;
+        gif.style.animationDuration = randomSpeed + 's';
+    
+        gif.addEventListener('animationend', () => {
+            gif.remove();
+        });
     }
 
 
