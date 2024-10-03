@@ -292,7 +292,7 @@ function gelditu(){
             total+=kuadro[i][e];
         }
         if(total>=x){
-            puntuak.lerroKenduta(total/10);
+            puntuak.lerroKenduta(zenbat);
             garbitu(i);
             zenbat++;
         }
