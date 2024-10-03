@@ -48,7 +48,7 @@ function gehituPieza(pie){
 }
 
 function piezaBerria(){
-    
+    bukatuta();
     if(horaingoa.length <=0){
         horaingoa = lista.slice();
     }
@@ -397,6 +397,7 @@ function jokua_gelditu(){
 /*******************Reset botoila*******************/
 document.getElementById("reset_botoila").addEventListener("click", jokua_reset);
 function jokua_reset(){
+    pausa=false;
     probabili.erakutsiReset();
     puntuak.kenduPuntuak(puntuak.getScore());
     prezioa=100; // <-----------------------PREZIOA--------------------------------------
@@ -424,7 +425,27 @@ function hustu(){
     }
 }
 
-/*Fondoa aldatu*/
+/*******************DEATH*******************/
+
+function bukatuta(){
+
+    for(let i=0;i<=1;i++){
+        //console.log("i: "+i);
+        for(let e =0;e<kuadro[i].length;e++){
+            
+            //console.log("e: "+e);
+            console.log(kuadro[i][e]);
+            if(kuadro[i][e]!==0){
+                
+                //jokua_reset();
+                pausa=true;
+            }
+        }
+    }
+}
+
+
+/*******************Fondoa aldatu*******************/
 document.getElementById("fondo-G").addEventListener("click", fondo_G);
 document.getElementById("fondo-B").addEventListener("click", fondo_B);
 document.getElementById("fondo-Normal").addEventListener("click", fondo_Normal);
@@ -477,11 +498,12 @@ function startInterval() {
         impMatriz();
 
         
-        const interval = abiaduraKalkulatu(puntuak.getLerro());
+        
+    }
+    const interval = abiaduraKalkulatu(puntuak.getLerro());
 
         
-        setTimeout(startInterval, interval);
-    }
+    setTimeout(startInterval, interval);
 }
 startInterval();
 
