@@ -320,11 +320,6 @@ impMatriz();
 
 
 
-
- 
-
-
-
 function impMatriz() {
     const container = document.getElementById("proba");
     container.innerHTML = "";
@@ -350,6 +345,7 @@ function impMatriz() {
     }
 }
 
+/*******************Matrizea ahunditzeko*******************/
 document.getElementById("tamaina_handitu").addEventListener("click", handitu_matrizea);
 
 let prezioa=100; // <-----------------------PREZIOA--------------------------------------
@@ -371,7 +367,7 @@ function handitu_matrizea(){
     document.getElementById("puntu_T").innerHTML="Handitu: "+prezioa+"P";
 }
 
-
+/*******************Piezaren probabilitarea erakutxi*******************/
 let probabilitateBotoia = document.getElementById("portzentaila");
 probabilitateBotoia.addEventListener("click", erakutsiHurrengoa);
 function erakutsiHurrengoa(){
@@ -447,7 +443,6 @@ function bukatuta(){
 }
 
 function deathErakutsi() {
-    //console.log(111111111111111);
     var audio = new Audio('../soundtrack/Dark_Souls_3_YOU_DIED.mp3');
     audio.play();
     let deathScreen = document.getElementById("death-screen");
@@ -474,6 +469,7 @@ function fondo_G(){
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
+    document.getElementById("menu").style.backgroundColor="#000000";
 }
 
 function fondo_B(){
@@ -486,6 +482,7 @@ function fondo_B(){
 
 function fondo_Normal(){
     document.body.style.background = "linear-gradient(180deg, rgba(113,113,113,1) 30%, rgba(0,0,0,1) 100%)";
+    document.getElementById("menu").style.backgroundColor="#000000";
 }
 
 
