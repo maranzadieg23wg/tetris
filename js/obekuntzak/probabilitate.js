@@ -4,7 +4,7 @@ class Probabilitateak{
 
     constructor(){
         this.erakutsi=0;
-        this.prezioa = 5;
+        this.prezioa = 250;
 
         this.zenbatBalio();
     }
