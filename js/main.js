@@ -192,14 +192,14 @@ function rotatu_90() {
     let pos = [];
     let pivot = null;
 
-    // Encontrar las posiciones de la pieza (celdas con valor 2) y definir un pivote (por ejemplo, la primera celda)
+    
     for (let i = 0; i < kuadro.length; i++) {
         for (let e = 0; e < kuadro[i].length; e++) {
             if (kuadro[i][e] == 2) {
                 let temp = [i, e];
                 pos.push(temp);
                 if (pivot === null) {
-                    pivot = [i, e]; // Tomamos la primera celda encontrada como pivote
+                    pivot = [i, e]; 
                 }
             }
         }
@@ -210,12 +210,13 @@ function rotatu_90() {
     let py = pivot[1];
 
     for (let i = 0; i < pos.length; i++) {
-        let a = pos[i][0]; // Coordenada x
-        let b = pos[i][1]; // Coordenada y
+        let a = pos[i][0]; 
+        let b = pos[i][1]; 
 
-        // Fórmula para rotación alrededor del pivote (90 grados)
-        let newA = px + (b - py);
-        let newB = py - (a - px);
+        
+
+        let newA = px - (b - py);
+        let newB = py + (a - px);
 
         let te = [newA, newB];
         newPos.push(te);
@@ -224,15 +225,15 @@ function rotatu_90() {
     console.log("Posiciones originales:", pos);
     console.log("Posiciones después de rotar:", newPos);
 
-    // Verificar si la rotación es válida (espacios libres)
+    
     if (libreRot(newPos)) {
-        // Limpiar las posiciones antiguas
+
         for (let i = 0; i < pos.length; i++) {
             let temp = pos[i];
             kuadro[temp[0]][temp[1]] = 0;
         }
 
-        // Colocar las nuevas posiciones en la matriz
+
         for (let i = 0; i < newPos.length; i++) {
             let temp = newPos[i];
             kuadro[temp[0]][temp[1]] = 2;
@@ -349,12 +350,13 @@ document.addEventListener('keydown', (event) => {
         azkar();
         impMatriz(); 
     }
-    if(keyName == "z"){
+    if(keyName == "c"){
         rotatu90();
         impMatriz(); 
     }
-    if(keyName == "c"){
+    if(keyName == "z"){
         rotatu_90();
+        
         impMatriz(); 
     }
 
