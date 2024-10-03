@@ -424,16 +424,38 @@ function fondo_Normal(){
 
 
 //Deitzeko funtzio bateri nahi den bakoitzean
-setInterval(() => {
+/*setInterval(() => {
     if (!pausa){
         behera();
         impMatriz();
     }
-}, 1000);
+    const interval = calcularIntervalo();
+   
+}, Math.max(100, 1000 - puntuak.getLerro() * 100));*/
 
+function abiaduraKalkulatu(puntuak) {
+    if (puntuak < 5) return 600;
+    if (puntuak < 10) return 400;
+    if (puntuak < 15) return 200;
+    if (puntuak < 20) return 150;
+    return 80;
+}
 
+function startInterval() {
+    if (!pausa) {
+        behera();
+        impMatriz();
 
- document.addEventListener('keydown', (event) => {
+        
+        const interval = abiaduraKalkulatu(puntuak.getLerro());
+
+        
+        setTimeout(startInterval, interval);
+    }
+}
+startInterval();
+
+document.addEventListener('keydown', (event) => {
     if (!pausa) {
 
         audio.loop = true;
