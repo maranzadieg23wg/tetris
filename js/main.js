@@ -329,44 +329,38 @@ setInterval(() => {
 }, 1000);
  //Deitzeko funtzio bateri nahi den bakoitzean
 
-document.addEventListener('keydown', (event) => {
-    if(!pausa){
+ document.addEventListener('keydown', (event) => {
+    if (!pausa) {
 
-        audio.play();
         audio.loop = true;
-        keyName = event.key;
+        audio.play();
+
+        const keyName = event.key;
         console.log(`Sakatutako tekla: ${keyName}`);
 
-
-
-
-    if(keyName == "a" || keyName == "ArrowLeft"){
-        ezker();
-        //pie.rotatu90;
-        impMatriz(); 
+        if (keyName === "a" || keyName === "ArrowLeft") {
+            ezker();
+            impMatriz(); 
+        }
+        if (keyName === "d" || keyName === "ArrowRight") {
+            eskubi();
+            impMatriz(); 
+        }
+        if (keyName === "s" || keyName === "ArrowDown") {
+            azkar();
+            impMatriz(); 
+        }
+        if (keyName === "c") {
+            rotatu90();
+            impMatriz(); 
+        }
+        if (keyName === "z") {
+            rotatu_90();
+            impMatriz(); 
+        }
     }
-    if(keyName == "d" || keyName == "ArrowRight"){
-        //pie.rotatu90();
-        eskubi();
-        impMatriz(); 
-    }
-    if(keyName == "s" || keyName == "ArrowDown"){
-        azkar();
-        impMatriz(); 
-    }
-    if(keyName == "c"){
-        rotatu90();
-        impMatriz(); 
-    }
-    if(keyName == "z"){
-        rotatu_90();
-        
-        impMatriz(); 
-    }
+});
 
-
-    
-}); 
 
 
 function impMatriz() {
