@@ -6,7 +6,7 @@ class Puntuak{
         this.lerro=0;
         this.maxScore = this.getCookie();
 
-        this.tetris =5;
+        this.tetris =0;
        
 
         if(this.maxScore ==null){
@@ -37,7 +37,11 @@ class Puntuak{
             this.gehituPuntuak(300*zenbat);
         }
 
-        if(zenbat ==4){
+        
+    }
+
+    gehituTeti(z){
+        if(z ==4){
             this.tetris++;
             this.tetrisEginda();
         }

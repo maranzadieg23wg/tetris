@@ -279,6 +279,7 @@ function libre(nora){
 
 
 function gelditu(){
+    let zenbat =0;
     for(let i=0;i<kuadro.length;i++){
         let total=0;
         for(let e=0;e<kuadro[i].length;e++){
@@ -293,8 +294,10 @@ function gelditu(){
         if(total>=x){
             puntuak.lerroKenduta(total/10);
             garbitu(i);
+            zenbat++;
         }
     }
+    puntuak.gehituTeti(zenbat);
     let pie = new Pieza(piezaBerria()); 
     gehituPieza(pie);
 }
