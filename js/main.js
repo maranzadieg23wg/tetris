@@ -555,5 +555,9 @@ document.addEventListener('keydown', (event) => {
             rotatu_90();
             impMatriz(); 
         }
+
+        if (keyName === "1") {
+            puntuak.createFlyingGif(); 
+        }
     }
 });
