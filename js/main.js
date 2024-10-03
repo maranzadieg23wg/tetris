@@ -4,6 +4,8 @@ import Puntuak from './UI/uiControler.js';
 
 import Probabilitateak from './obekuntzak/probabilitate.js';
 
+import FondoaAl from './obekuntzak/fondoa.js';
+
 /* Audio */
 var audio = new Audio('../soundtrack/tetris.mp3');
 audio.play();
@@ -463,31 +465,7 @@ function deathKendu(){
 }
 
 
-/*******************Fondoa aldatu*******************/
-document.getElementById("fondo-G").addEventListener("click", fondo_G);
-document.getElementById("fondo-B").addEventListener("click", fondo_B);
-document.getElementById("fondo-Normal").addEventListener("click", fondo_Normal);
-
-function fondo_G(){
-    document.body.style.backgroundImage = "url('../img/giga-chad.png')";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundPosition = "center";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.getElementById("menu").style.backgroundColor="#000000";
-}
-
-function fondo_B(){
-    document.body.style.backgroundImage = "url('../img/berserk.png')";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundPosition = "center";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.getElementById("menu").style.backgroundColor= "#3b3b3b";
-}
-
-function fondo_Normal(){
-    document.body.style.background = "linear-gradient(180deg, rgba(113,113,113,1) 30%, rgba(0,0,0,1) 100%)";
-    document.getElementById("menu").style.backgroundColor="#000000";
-}
+let fond = new FondoaAl();
 
 
 //Deitzeko funtzio bateri nahi den bakoitzean
