@@ -222,8 +222,8 @@ function rotatu_90() {
         newPos.push(te);
     }
 
-    console.log("Posiciones originales:", pos);
-    console.log("Posiciones después de rotar:", newPos);
+    /*console.log("Posiciones originales:", pos);
+    console.log("Posiciones después de rotar:", newPos);*/
 
     
     if (libreRot(newPos)) {
