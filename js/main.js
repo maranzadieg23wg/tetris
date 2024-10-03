@@ -19,8 +19,6 @@ const lista =["H", "I", "S", "Z", "L", "J", "T"];
 let horaingoa =[];
 
 
-
-
 /* PUNTUAK */
 let puntuak = new Puntuak();
 
@@ -266,7 +264,7 @@ function impMatriz() {
 
 document.getElementById("tamaina_handitu").addEventListener("click", handitu_matrizea);
 
-let prezioa=100;
+let prezioa=1500; // <-----------------------PREZIOA--------------------------------------
 let zenbat_aldiz=0;
 function handitu_matrizea(){
     if(puntuak.getScore()>=prezioa){
@@ -297,8 +295,9 @@ function erakutsiHurrengoa(){
     
 }
 
-document.getElementById("pausa_botoila").addEventListener("click", jukua_gelditu);
-function jukua_gelditu(){
+/*Pausa botoila*/
+document.getElementById("pausa_botoila").addEventListener("click", jokua_gelditu);
+function jokua_gelditu(){
     pausa=!pausa;
     if(pausa){
         document.getElementById("pausa_botoila").innerHTML="Jarraitu";
@@ -307,6 +306,35 @@ function jukua_gelditu(){
     }
 }
 
+/*Reset botoila*/ 
+document.getElementById("reset_botoila").addEventListener("click", jokua_reset);
+function jokua_reset(){
+    puntuak.kenduPuntuak(puntuak.getScore());
+    prezioa=1500; // <-----------------------PREZIOA--------------------------------------
+    probabili.zenbatBalio();
+    x=10;
+    for (let i = 0; i < 10; i++) {
+        kuadro[i].pop(); 
+    }
+    kuadro = [];
+    for (let i = 0; i < y; i++) {
+        kuadro[i] = new Array(x).fill(0);
+    }
+    hustu();
+    impMatriz();
+    gehituPieza(pie);
+    document.getElementById("puntu_T").innerHTML="Handitu: "+prezioa+"P";
+}
+
+function hustu(){
+    for (let e=0; e<y; e++){
+        for (let i=0; i<x; i++){
+            kuadro[e][i]=0;
+        }
+    }
+}
+
+/*Fondoa aldatu*/
 document.getElementById("fondo-G").addEventListener("click", fondo_G);
 document.getElementById("fondo-B").addEventListener("click", fondo_B);
 document.getElementById("fondo-Normal").addEventListener("click", fondo_Normal);
