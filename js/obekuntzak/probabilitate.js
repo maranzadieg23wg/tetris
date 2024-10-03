@@ -27,31 +27,31 @@ class Probabilitateak{
     zenbatBalio(){
         // H
         const containerH = document.getElementById("H");
-        containerH.innerHTML = this.getTeorialPrezioa(0);
+        containerH.innerHTML = this.getTeorialPrezioa(0)+"P";
 
         // J
         const containerJ = document.getElementById("J");
-        containerJ.innerHTML = this.getTeorialPrezioa(1);
+        containerJ.innerHTML = this.getTeorialPrezioa(1)+"P";
 
         // S
         const containerS = document.getElementById("S");
-        containerS.innerHTML = this.getTeorialPrezioa(2);
+        containerS.innerHTML = this.getTeorialPrezioa(2)+"P";
 
         // L
         const containerL = document.getElementById("L");
-        containerL.innerHTML = this.getTeorialPrezioa(3);
+        containerL.innerHTML = this.getTeorialPrezioa(3)+"P";
 
         // Z
         const containerZ = document.getElementById("Z");
-        containerZ.innerHTML = this.getTeorialPrezioa(4);
+        containerZ.innerHTML = this.getTeorialPrezioa(4)+"P";
 
         // I
         const containerI = document.getElementById("I");
-        containerI.innerHTML = this.getTeorialPrezioa(5);
+        containerI.innerHTML = this.getTeorialPrezioa(5)+"P";
 
         // T
         const containerT = document.getElementById("T");
-        containerT.innerHTML = this.getTeorialPrezioa(6);
+        containerT.innerHTML = this.getTeorialPrezioa(6)+"P";
     }
 
     probabilitatea(lista){
