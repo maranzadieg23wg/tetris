@@ -8,16 +8,16 @@ import Probabilitateak from './obekuntzak/probabilitate.js';
 var audio = new Audio('../soundtrack/tetris.mp3');
 audio.play();
 
+/*MATRIZEAREN TAMAINA*/
 let x = 10;
 const y = 21;
 
+/*Jokua gelditzeko*/
 let pausa=false;
 
-let keyName;
- 
+/*Piezen lista*/
 const lista =["H", "I", "S", "Z", "L", "J", "T"];
 let horaingoa =[];
-
 
 /* PUNTUAK */
 let puntuak = new Puntuak();
@@ -25,17 +25,18 @@ let puntuak = new Puntuak();
 /* OBEKUNTZAK */
 let probabili = new Probabilitateak();
 
+/*Matrizea 0-ekin betezen du*/
 let kuadro = [];
 for (let i = 0; i < y; i++) {
     kuadro[i] = new Array(x).fill(0);
-    //kuadro[i] = new Array(x);
 }
-//console.log(kuadro);
 
+/*PIEZEN OBGETUA*/
 let pie = new Pieza(piezaBerria()); 
 
 gehituPieza(pie);
 
+/*******************Sortu den piza matrizean gehitzen*******************/
 function gehituPieza(pie){
     let mat = pie.getIrudia();
     for(let i=0;i<mat.length;i++){
@@ -47,19 +48,17 @@ function gehituPieza(pie){
     }
 }
 
+/*******************Pieza berri bat sortzen du *******************/
 function piezaBerria(){
     bukatuta();
     if(horaingoa.length <=0){
         horaingoa = lista.slice();
     }
 
-    //console.log(horaingoa);
     let z = horaingoa.length;
-    //console.log("Luzeera: "+z);
-
+   
     let pos = Math.floor(Math.random() * z);
-    //console.log("pos: "+pos);
-
+   
     let izena = horaingoa[pos];
 
     horaingoa.splice(pos,1);
@@ -73,9 +72,8 @@ function piezaBerria(){
     return izena;
 }
 
-
+/*******************Pieza beheraka grabitatea edukitzeko*******************/
 function behera(){
-    //console.log(111);
     if(libre("s")){
         for(let i = kuadro.length - 1; i >= 0; i--){
             for(let e = 0; e < kuadro[i].length; e++){
@@ -90,6 +88,7 @@ function behera(){
     }
 }
 
+/*******************Pieza eskuinera mugitzeko*******************/
 function eskubi(){
     console.log(libre("d"));
     
@@ -110,6 +109,7 @@ function eskubi(){
     }
 }
 
+/*******************Pieza ezkerrera mugitzeko*******************/
 function ezker(){
     console.log(libre("a"));
     
@@ -126,13 +126,13 @@ function ezker(){
     }
 }
 
-
+/*******************Beheko fletxari ematerakoan pieza askarrago geiztea*******************/
 function azkar(){
     puntuak.lerroGehitiz();
     behera();
 }
 
-
+/*******************90 gradu eskuinera rotatzeko*******************/
 function rotatu90() {
     let pos = [];
     let pivot = null;
@@ -187,6 +187,7 @@ function rotatu90() {
     impMatriz();
 }
 
+/*******************90 gradu ezkerrera rotatzeko*******************/
 function rotatu_90() {
     let pos = [];
     let pivot = null;
@@ -221,9 +222,6 @@ function rotatu_90() {
         newPos.push(te);
     }
 
-    /*console.log("Posiciones originales:", pos);
-    console.log("Posiciones después de rotar:", newPos);*/
-
     
     if (libreRot(newPos)) {
 
@@ -242,6 +240,7 @@ function rotatu_90() {
     impMatriz();
 }
 
+/*******************Rotatuko den tokia libre dagon edo ez jakiteko*******************/
 function libreRot(lista) {
     // Verificar si las nuevas posiciones están dentro de la matriz y libres
     for (let i = 0; i < lista.length; i++) {
@@ -254,6 +253,7 @@ function libreRot(lista) {
 }
 
 
+/*******************Piza mugituko den tokia libre dagon edo ez jakiteko*******************/
 function libre(nora){
     for(let i = 0; i < kuadro.length; i++){
         for(let e = 0; e < kuadro[i].length; e++){
@@ -277,7 +277,7 @@ function libre(nora){
 
 
 
-
+/*******************Tetrizeko piezak gelditzen ditu*******************/
 function gelditu(){
     for(let i=0;i<kuadro.length;i++){
         let total=0;
@@ -299,6 +299,7 @@ function gelditu(){
     gehituPieza(pie);
 }
 
+/*******************Pausa botoila*******************/
 function garbitu(lin){
     for(let e=0;e<kuadro[lin].length;e++){
         kuadro[lin][e]=0;
@@ -307,19 +308,18 @@ function garbitu(lin){
     garbiBehera(lin);
 }
 
+/*******************Betetzen den filaren goiko fila geizten du*******************/
 function garbiBehera(lin){
     for(let i = lin; i > 0; i--){
         for(let e = 0; e < kuadro[i].length; e++){
             kuadro[i][e] = kuadro[i-1][e];
-            //kuadro[i-1][e] = kuadro[i-2][e];
         }
     }
 }
-
 impMatriz();
 
 
-
+/*******************Matrizea HTML-an idazten du*******************/
 function impMatriz() {
     const container = document.getElementById("proba");
     container.innerHTML = "";
@@ -367,7 +367,7 @@ function handitu_matrizea(){
     document.getElementById("puntu_T").innerHTML="Handitu: "+prezioa+"P";
 }
 
-/*******************Piezaren probabilitarea erakutxi*******************/
+/*******************Piezaren probabilitatea erakutxi*******************/
 let probabilitateBotoia = document.getElementById("portzentaila");
 probabilitateBotoia.addEventListener("click", erakutsiHurrengoa);
 function erakutsiHurrengoa(){
@@ -414,6 +414,7 @@ function jokua_reset(){
     document.getElementById("puntu_T").innerHTML="Handitu: "+prezioa+"P";
 }
 
+/*******************Matrizea husteko*******************/
 function hustu(){
     for (let e=0; e<y; e++){
         for (let i=0; i<x; i++){
@@ -486,10 +487,6 @@ function fondo_Normal(){
 }
 
 
-
-
-
-
 //Deitzeko funtzio bateri nahi den bakoitzean
 /*setInterval(() => {
     if (!pausa){
@@ -500,6 +497,7 @@ function fondo_Normal(){
    
 }, Math.max(100, 1000 - puntuak.getLerro() * 100));*/
 
+/*******************Piezen askartasuna handitzen du*******************/
 function abiaduraKalkulatu(puntuak) {
     if (puntuak < 5) return 600;
     if (puntuak < 10) return 400;
@@ -508,6 +506,7 @@ function abiaduraKalkulatu(puntuak) {
     return 80;
 }
 
+/*******************Jokuaren denbora aktibatzen du*******************/
 function startInterval() {
     if (!pausa) {
         behera();
@@ -523,6 +522,7 @@ function startInterval() {
 }
 startInterval();
 
+/*******************Piezak mugitzeko*******************/
 document.addEventListener('keydown', (event) => {
     if (!pausa) {
 
