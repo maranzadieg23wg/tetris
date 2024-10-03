@@ -176,6 +176,7 @@ button:hover{background-color: #3e8e41;}
 }
 
 #death-screen {
+    margin: 0;
     background: rgba(0, 0, 0, 0.8);
     height: 100vh;
     justify-content: center;
@@ -183,9 +184,12 @@ button:hover{background-color: #3e8e41;}
     width: 100%;
     text-align: center;
     opacity: 1;
+    padding-top: 1px;
 }
 
+
 .death-background * {
+    /*padding-top: 100%;*/
     color: #ff0000;
     font-family: darkSouls, sans-serif;
     letter-spacing: 5px;
