@@ -41,6 +41,10 @@ class Puntuak{
     }
 
 
+    getLerro(){
+        return this.lerro;
+    }
+
     puntuakIdatzi(){
         const container = document.getElementById("puntuak");
         container.innerHTML = "Score: "+Math.round(this.score);
