@@ -321,45 +321,9 @@ function garbiBehera(lin){
 impMatriz();
 
 
-setInterval(() => {
-    if (!pausa){
-        behera();
-        impMatriz();
-    }
-}, 1000);
- //Deitzeko funtzio bateri nahi den bakoitzean
 
- document.addEventListener('keydown', (event) => {
-    if (!pausa) {
 
-        audio.loop = true;
-        audio.play();
-
-        const keyName = event.key;
-        console.log(`Sakatutako tekla: ${keyName}`);
-
-        if (keyName === "a" || keyName === "ArrowLeft") {
-            ezker();
-            impMatriz(); 
-        }
-        if (keyName === "d" || keyName === "ArrowRight") {
-            eskubi();
-            impMatriz(); 
-        }
-        if (keyName === "s" || keyName === "ArrowDown") {
-            azkar();
-            impMatriz(); 
-        }
-        if (keyName === "c") {
-            rotatu90();
-            impMatriz(); 
-        }
-        if (keyName === "z") {
-            rotatu_90();
-            impMatriz(); 
-        }
-    }
-});
+ 
 
 
 
@@ -453,3 +417,50 @@ function fondo_B(){
 function fondo_Normal(){
     document.body.style.background = "linear-gradient(180deg, rgba(113,113,113,1) 30%, rgba(0,0,0,1) 100%)";
 }
+
+
+
+
+
+
+//Deitzeko funtzio bateri nahi den bakoitzean
+setInterval(() => {
+    if (!pausa){
+        behera();
+        impMatriz();
+    }
+}, 1000);
+
+
+
+ document.addEventListener('keydown', (event) => {
+    if (!pausa) {
+
+        audio.loop = true;
+        audio.play();
+
+        const keyName = event.key;
+        console.log(`Sakatutako tekla: ${keyName}`);
+
+        if (keyName === "a" || keyName === "ArrowLeft") {
+            ezker();
+            impMatriz(); 
+        }
+        if (keyName === "d" || keyName === "ArrowRight") {
+            eskubi();
+            impMatriz(); 
+        }
+        if (keyName === "s" || keyName === "ArrowDown") {
+            azkar();
+            impMatriz(); 
+        }
+        if (keyName === "c") {
+            rotatu90();
+            impMatriz(); 
+        }
+        if (keyName === "z") {
+            rotatu_90();
+            impMatriz(); 
+        }
+    }
+});
