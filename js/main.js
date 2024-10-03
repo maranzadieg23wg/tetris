@@ -383,7 +383,7 @@ function erakutsiHurrengoa(){
     
 }
 
-/*Pausa botoila*/
+/*******************Pausa botoila*******************/
 document.getElementById("pausa_botoila").addEventListener("click", jokua_gelditu);
 function jokua_gelditu(){
     pausa=!pausa;
@@ -394,7 +394,7 @@ function jokua_gelditu(){
     }
 }
 
-/*Reset botoila*/ 
+/*******************Reset botoila*******************/
 document.getElementById("reset_botoila").addEventListener("click", jokua_reset);
 function jokua_reset(){
     probabili.erakutsiReset();
