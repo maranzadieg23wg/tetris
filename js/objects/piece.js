@@ -153,10 +153,13 @@ const shape= [
 
 class Pieza{
     constructor(mota){
-        this.mota = mota;
-        this.rotazioa= 0;
+      this.mota = mota;
+      this.rotazioa= 0;
 
-        this.list = this.lortuFOrma(mota);
+      this.x =0;
+      this.y =0;
+
+      this.list = this.lortuFOrma(mota);
         
     }
 
@@ -200,6 +203,22 @@ class Pieza{
     getIrudia(){
         return this.list[this.rotazioa];
     }
+
+    xG(){
+      x++;
+    }
+
+    xK(){
+      x--;
+    }
+
+    yG(){
+      y++;
+    }
+
+    
+
+
 
 }
 
