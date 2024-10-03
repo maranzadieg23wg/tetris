@@ -11,6 +11,7 @@ audio.play();
 let x = 10;
 const y = 21;
 
+let pausa=false;
 
 let keyName;
  
@@ -202,35 +203,38 @@ impMatriz();
 
 
 setInterval(() => {
-    behera();
-    impMatriz();
+    if (!pausa){
+        behera();
+        impMatriz();
+    }
 }, 1000);
  //Deitzeko funtzio bateri nahi den bakoitzean
 
 document.addEventListener('keydown', (event) => {
+    if(!pausa){
 
-    audio.play();
-    audio.loop = true;
-    keyName = event.key;
-    console.log(`Sakatutako tekla: ${keyName}`);
+        audio.play();
+        audio.loop = true;
+        keyName = event.key;
+        console.log(`Sakatutako tekla: ${keyName}`);
 
 
 
 
-    if(keyName == "a" || keyName == "ArrowLeft"){
-        ezker();
-        impMatriz(); 
+        if(keyName == "a" || keyName == "ArrowLeft"){
+            ezker();
+            impMatriz(); 
+        }
+        if(keyName == "d" || keyName == "ArrowRight"){
+            //pie.rotatu90();
+            eskubi();
+            impMatriz(); 
+        }
+        if(keyName == "s" || keyName == "ArrowDown"){
+            azkar();
+            impMatriz(); 
+        }
     }
-    if(keyName == "d" || keyName == "ArrowRight"){
-        //pie.rotatu90();
-        eskubi();
-        impMatriz(); 
-    }
-    if(keyName == "s" || keyName == "ArrowDown"){
-        azkar();
-        impMatriz(); 
-    }
-
     
 }); 
 
@@ -260,30 +264,26 @@ function impMatriz() {
     }
 }
 
-let a= document.getElementById("tamaina_handitu");
-a.addEventListener("click", handitu_matrizea());
-
 document.getElementById("tamaina_handitu").addEventListener("click", handitu_matrizea);
 
+let prezioa=100;
+let zenbat_aldiz=0;
 function handitu_matrizea(){
-    if(puntuak.getScore()>=100){
-        puntuak.kenduPuntuak(100);
+    if(puntuak.getScore()>=prezioa){
+        puntuak.kenduPuntuak(prezioa);
+        zenbat_aldiz++;
         x+=1;
         for (let i = 0; i < kuadro.length; i++) {
             kuadro[i].push(0); 
         }
         impMatriz();
     }
+
+    if (zenbat_aldiz === 3 || zenbat_aldiz === 5 || zenbat_aldiz === 7) {
+        prezioa = prezioa * 2;
+    }
+    document.getElementById("puntu_T").innerHTML="Handitu: "+prezioa+"P";
 }
-
-
-
-
-
-
-
-
-
 
 
 let probabilitateBotoia = document.getElementById("portzentaila");
@@ -297,6 +297,15 @@ function erakutsiHurrengoa(){
     
 }
 
+document.getElementById("pausa_botoila").addEventListener("click", jukua_gelditu);
+function jukua_gelditu(){
+    pausa=!pausa;
+    if(pausa){
+        document.getElementById("pausa_botoila").innerHTML="Jarraitu";
+    }else{
+        document.getElementById("pausa_botoila").innerHTML="Gelditu";
+    }
+}
 
 document.getElementById("fondo-G").addEventListener("click", fondo_G);
 document.getElementById("fondo-B").addEventListener("click", fondo_B);
@@ -308,12 +317,15 @@ function fondo_G(){
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
 }
+
 function fondo_B(){
     document.body.style.backgroundImage = "url('../img/berserk.png')";
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
+    document.getElementById("menu").style.backgroundColor= "#3b3b3b";
 }
+
 function fondo_Normal(){
     document.body.style.background = "linear-gradient(180deg, rgba(113,113,113,1) 30%, rgba(0,0,0,1) 100%)";
 }

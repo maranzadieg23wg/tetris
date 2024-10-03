@@ -154,6 +154,4 @@ body {
   
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
-button:hover{
-    background-color: #3e8e41;
-}
+button:hover{background-color: #3e8e41;}
