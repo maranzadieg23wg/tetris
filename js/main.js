@@ -397,6 +397,7 @@ function jokua_gelditu(){
 /*Reset botoila*/ 
 document.getElementById("reset_botoila").addEventListener("click", jokua_reset);
 function jokua_reset(){
+    probabili.erakutsiReset();
     puntuak.kenduPuntuak(puntuak.getScore());
     prezioa=1500; // <-----------------------PREZIOA--------------------------------------
     probabili.zenbatBalio();

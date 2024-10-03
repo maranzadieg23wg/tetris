@@ -23,6 +23,10 @@ class Probabilitateak{
         this.erakutsi++;
     }
 
+    erakutsiReset(){
+        this.erakutsi =0;
+    }
+
 
     zenbatBalio(){
         // H
