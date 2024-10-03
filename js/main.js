@@ -24,10 +24,10 @@ let horaingoa =[];
 /* PUNTUAK */
 let puntuak = new Puntuak();
 
-/* OBEKUNTZAK */
+/* PROBABILITATE OBEKUNTZA */
 let probabili = new Probabilitateak();
 
-/*Matrizea 0-ekin betezen du*/
+/*Matrizea sortu eta 0-ekin betezen du*/
 let kuadro = [];
 for (let i = 0; i < y; i++) {
     kuadro[i] = new Array(x).fill(0);
@@ -38,7 +38,7 @@ let pie = new Pieza(piezaBerria());
 
 gehituPieza(pie);
 
-/*******************Sortu den piza matrizean gehitzen*******************/
+/*******************Sortu den piza matrizean gehitzen du*******************/
 function gehituPieza(pie){
     let mat = pie.getIrudia();
     for(let i=0;i<mat.length;i++){
@@ -92,7 +92,7 @@ function behera(){
 
 /*******************Pieza eskuinera mugitzeko*******************/
 function eskubi(){
-    console.log(libre("d"));
+    //console.log(libre("d"));
     
     if(libre("d")){
         
@@ -113,7 +113,7 @@ function eskubi(){
 
 /*******************Pieza ezkerrera mugitzeko*******************/
 function ezker(){
-    console.log(libre("a"));
+    //console.log(libre("a"));
     
     if (libre("a")) {
         for (let i = 0; i < kuadro.length; i++) {
@@ -139,14 +139,15 @@ function rotatu90() {
     let pos = [];
     let pivot = null;
 
-    // Encontrar las posiciones de la pieza (celdas con valor 2) y definir un pivote (por ejemplo, la primera celda)
+    
+    // ↓ Bilatzen du matrizean posizio bakoitzak non dagoen pieza (2) eta ezartzen du pivot bat
     for (let i = 0; i < kuadro.length; i++) {
         for (let e = 0; e < kuadro[i].length; e++) {
             if (kuadro[i][e] == 2) {
                 let temp = [i, e];
                 pos.push(temp);
                 if (pivot === null) {
-                    pivot = [i, e]; // Tomamos la primera celda encontrada como pivote
+                    pivot = [i, e]; // ← Aurkitzen den lehenengo pieza pivot bezala ezartzen da
                 }
             }
         }
@@ -157,10 +158,10 @@ function rotatu90() {
     let py = pivot[1];
 
     for (let i = 0; i < pos.length; i++) {
-        let a = pos[i][0]; // Coordenada x
-        let b = pos[i][1]; // Coordenada y
+        let a = pos[i][0]; // ← X kordenada
+        let b = pos[i][1]; // ← Y Kordenada
 
-        // Fórmula para rotación alrededor del pivote (90 grados)
+        // ↓ Formula rotatzeko pieza pivot-aren inguruan (90º)
         let newA = px + (b - py);
         let newB = py - (a - px);
 
@@ -171,15 +172,15 @@ function rotatu90() {
     console.log("Posiciones originales:", pos);
     console.log("Posiciones después de rotar:", newPos);
 
-    // Verificar si la rotación es válida (espacios libres)
+    // ↓ Begiratzen da ea dagoen libre posizio berriak
     if (libreRot(newPos)) {
-        // Limpiar las posiciones antiguas
+        // Borratu posizio zaharrak
         for (let i = 0; i < pos.length; i++) {
             let temp = pos[i];
             kuadro[temp[0]][temp[1]] = 0;
         }
 
-        // Colocar las nuevas posiciones en la matriz
+        // Idatzi posizio berritan
         for (let i = 0; i < newPos.length; i++) {
             let temp = newPos[i];
             kuadro[temp[0]][temp[1]] = 2;
@@ -339,7 +340,7 @@ function impMatriz() {
         for (let j = 0; j < kuadro[i].length; j++) {
             const cell = document.createElement("span");
             cell.classList.add("cell");
-            if(kuadro[i][j] !=0){
+            if(kuadro[i][j] !=0){ // ← 0 denean ez erakutsi ezer
                 cell.textContent = kuadro[i][j]; 
             }else{
                 cell.textContent = ""; 
