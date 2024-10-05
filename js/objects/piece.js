@@ -1,3 +1,4 @@
+// ↓ Hemen ditugu piezen posizio guztiak
 const shape= [
     // I piece
     [
@@ -151,19 +152,20 @@ const shape= [
 ]
 
 
+// ↓ Sortu egiten dugu pieza klasea erabiliko dena lortzeko ze irudi edukiko duen piezak
 class Pieza{
+
+
     constructor(mota){
-      this.mota = mota;
-      this.rotazioa= 0;
+      this.mota = mota; // ← Gorde egiten dugu ze motatakoa den pieza, H, I, J eta abar
+      this.rotazioa= 0; // ← Zein rotazio edukiko duen
 
-      this.x =0;
-      this.y =0;
-
-      this.list = this.lortuFOrma(mota);
+      this.list = this.lortuFOrma(mota); // ← Hemen dauden piezaren rotazio guztiak
         
     }
 
 
+    // ↓ Baldin eta zein pieza aukeratu den, forma bat edo beste itzuliko du
     lortuFOrma(mota) {
         switch (mota) {
             case "I":
@@ -200,30 +202,17 @@ class Pieza{
     }
 
 
+    // ↓ Piezaren irudia bueltatuko du bere rotazioaren arabera.
     getIrudia(){
         return this.list[this.rotazioa];
     }
 
-    xG(){
-      x++;
-    }
-
-    xK(){
-      x--;
-    }
-
-    yG(){
-      y++;
-    }
 
     
 
 
 
 }
-
-
-
 
 
 
